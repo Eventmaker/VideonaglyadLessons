@@ -1,0 +1,30 @@
+# IDE та редактори
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Системні файли
+.DS_Store
+Thumbs.db
+
+# Тимчасові файли
+*.log
+*.tmp
+*.temp
+
+# Аудіо файли (якщо вони великі, краще зберігати окремо)
+# audio/*.wav
+
+# Node.js (якщо буде використовуватися)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Python (якщо буде використовуватися)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env 

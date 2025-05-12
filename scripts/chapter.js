@@ -142,7 +142,6 @@ async function initAudioPlayer(chapterNumber) {
     }
 }
 
-
 async function loadQuiz(chapterNumber, quizContainer, submitQuizButton, quizResultsElement) {
     const quizSection = document.getElementById('quiz-section'); // Батьківська секція для тесту
 
@@ -153,7 +152,7 @@ async function loadQuiz(chapterNumber, quizContainer, submitQuizButton, quizResu
     }
 
     try {
-        const quizFilePath = `quizzes/chapter${chapterNumber}.json`;
+        const quizFilePath = `quizzes/chapter${chapterNumber}.json`; // Переконайся, що шлях правильний!
         const response = await fetch(quizFilePath);
 
         if (!response.ok) {
@@ -174,16 +173,15 @@ async function loadQuiz(chapterNumber, quizContainer, submitQuizButton, quizResu
             if (quizSection) quizSection.style.display = 'none';
             return;
         }
-        
-        // Перевірка наявності поля 'answer' (або 'correct' як ти використовував раніше)
-        // У моєму попередньому прикладі було q.answer, у твоєму HTML було q.correct
-        // Будемо очікувати 'answer' як індекс правильної відповіді
-        if (quizData.questions.some(q => typeof q.answer === 'undefined')) {
-             console.error('Формат питань тесту не містить поля "answer" для індексу правильної відповіді.');
-             quizContainer.innerHTML = `<p class="error">Некоректний формат питань тесту (відсутнє поле "answer").</p>`;
+
+        // === ЗМІНА ТУТ: Перевіряємо наявність поля 'correct' ===
+        if (quizData.questions.some(q => typeof q.correct === 'undefined')) {
+             console.error('Формат питань тесту не містить поля "correct" для індексу правильної відповіді.');
+             quizContainer.innerHTML = `<p class="error">Некоректний формат питань тесту (відсутнє поле "correct").</p>`;
              if (quizSection) quizSection.style.display = 'block';
              return;
         }
+        // === КІНЕЦЬ ЗМІНИ ===
 
 
         displayQuiz(quizData.questions, quizContainer, submitQuizButton, quizResultsElement);
@@ -197,6 +195,7 @@ async function loadQuiz(chapterNumber, quizContainer, submitQuizButton, quizResu
 }
 
 function displayQuiz(questions, quizContainer, submitQuizButton, quizResultsElement) {
+    // Ця функція залишається без змін, вона просто генерує HTML
     let quizHTML = '';
     questions.forEach((q, index) => {
         quizHTML += `<div class="quiz-question" data-question-index="${index}">`; // data-question-index для уникнення конфліктів
@@ -236,33 +235,37 @@ function evaluateQuiz(questions, quizResultsElement) {
              questionElement.style.border = 'none';
              questionElement.style.padding = '0';
         }
-        
+
         if (selectedOptionInput) {
             const answerIndex = parseInt(selectedOptionInput.value);
-            if (answerIndex === q.answer) { // Очікуємо q.answer
+            // === ЗМІНА ТУТ: Порівнюємо з q.correct ===
+            if (answerIndex === q.correct) {
                 score++;
                 resultsHTML += `<div class="question-feedback correct" style="padding: 0.75rem; margin-bottom: 0.5rem; border-radius: var(--md-sys-shape-corner-medium); background-color: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container);">`;
                 resultsHTML += `<p><strong>Питання ${index + 1}:</strong> Вірно! (${q.options[answerIndex]})</p></div>`;
                 if(questionElement) questionElement.style.borderLeft = '4px solid var(--md-sys-color-tertiary)';
             } else {
                 resultsHTML += `<div class="question-feedback incorrect" style="padding: 0.75rem; margin-bottom: 0.5rem; border-radius: var(--md-sys-shape-corner-medium); background-color: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container);">`;
-                resultsHTML += `<p><strong>Питання ${index + 1}:</strong> Невірно. Ви обрали: "${q.options[answerIndex]}".</p><p><em>Правильна відповідь:</em> "${q.options[q.answer]}"</p></div>`;
+                // === ЗМІНА ТУТ: Показуємо правильну відповідь з q.correct ===
+                resultsHTML += `<p><strong>Питання ${index + 1}:</strong> Невірно. Ви обрали: "${q.options[answerIndex]}".</p><p><em>Правильна відповідь:</em> "${q.options[q.correct]}"</p></div>`;
                  if(questionElement) questionElement.style.borderLeft = '4px solid var(--md-sys-color-error)';
             }
         } else {
             allAnswered = false;
             resultsHTML += `<div class="question-feedback unanswered" style="padding: 0.75rem; margin-bottom: 0.5rem; border-radius: var(--md-sys-shape-corner-medium); background-color: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant);">`;
-            resultsHTML += `<p><strong>Питання ${index + 1}:</strong> Немає відповіді.</p><p><em>Правильна відповідь:</em> "${q.options[q.answer]}"</p></div>`;
+            // === ЗМІНА ТУТ: Показуємо правильну відповідь з q.correct ===
+            resultsHTML += `<p><strong>Питання ${index + 1}:</strong> Немає відповіді.</p><p><em>Правильна відповідь:</em> "${q.options[q.correct]}"</p></div>`;
             if(questionElement) questionElement.style.borderLeft = '4px solid var(--md-sys-color-outline)';
         }
+        // === КІНЕЦЬ ЗМІН ===
     });
-    
+
     if (!allAnswered && questions.length > 0) { // Перевірка, чи є питання взагалі
         quizResultsElement.innerHTML = `<p class="error" style="padding:1rem; background:var(--md-sys-color-error-container); color:var(--md-sys-color-on-error-container); border-radius:var(--md-sys-shape-corner-medium);">Будь ласка, дайте відповідь на всі питання.</p>`;
         quizResultsElement.style.display = 'block';
         return;
     }
-    
+
     if (questions.length === 0) { // Якщо питань немає, але функцію викликали
         quizResultsElement.innerHTML = `<p>Тест не містить питань.</p>`;
         quizResultsElement.style.display = 'block';
@@ -273,4 +276,3 @@ function evaluateQuiz(questions, quizResultsElement) {
     quizResultsElement.innerHTML = resultsHTML;
     quizResultsElement.style.display = 'block';
 }
-

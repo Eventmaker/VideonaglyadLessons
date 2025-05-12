@@ -1,66 +1,71 @@
 <!DOCTYPE html>
-<html lang="uk">
-<head>
+<html lang="uk" data-theme="light"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Розділ 8: Початкова конфігурація пристроїв систем відеонагляду">
-    <title>Розділ 8 | Тренінг по Відеонагляду</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="scripts/chapter.js" data-chapter-number="8" defer></script>
-    <script src="scripts/audio.js" defer></script>
-</head>
-<body>
-    <header>
-        <h1>Тренінг по Відеонагляду</h1>
-        <button id="dark-mode-toggle" class="theme-toggle" aria-label="Перемкнути темну тему">🌙</button>
+    <meta name="description" content="Розділ 8: Початкова конфігурація пристроїв систем відеонагляду"> <title>Розділ 8 | Тренінг по Відеонагляду</title> <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/chapter-styles.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/chapter.js" defer></script>
+    </head>
+<body class="chapter-page"> <header class="chapter-page-header">
+        <a href="index.html" class="site-title-link"><h1>Тренінг по Відеонагляду</h1></a>
+        <button id="theme-toggle" class="text" aria-label="Перемкнути тему">Темна тема 🌙</button>
     </header>
 
-    <nav class="chapter-nav" role="navigation" aria-label="Навігація по розділу">
-        <a href="chapter7.html" class="nav-link">← Попередній розділ</a>
-        <div class="chapter-progress">
-            <span class="current-chapter">Розділ 8</span>
-            <span class="progress-separator">/</span>
-            <span class="total-chapters">18</span>
+    <nav class="chapter-navigation-bar" role="navigation" aria-label="Навігація по розділу">
+        <a href="chapter7.html" id="prev-chapter-link" class="nav-button">← Попередній</a>
+        <div class="chapter-progress-indicator">
+            Розділ <span id="current-chapter-number">8</span> / <span id="total-chapters-count">18</span>
         </div>
-        <a href="chapter9.html" class="nav-link">Наступний розділ →</a>
+        <a href="chapter9.html" id="next-chapter-link" class="nav-button">Наступний →</a>
     </nav>
 
-    <main>
+    <main class="chapter-layout-main">
         <article id="chapter-content-container">
-            <h2 id="chapter-title">Розділ 8: Початкова Конфігурація Пристроїв</h2>
-            
-            <section id="text-content-section">
-                <h3>Текстовий матеріал</h3>
-                <div id="text-content">
-                    <p>Завантаження текстового контенту...</p>
-                </div>
-            </section>
+            <h2 id="chapter-title" style="color: var(--md-sys-color-primary); margin-bottom: 1.5rem; font-size: var(--md-sys-typescale-headline-small-font-size);">
+                Розділ 8: Початкова Конфігурація Пристроїв </h2>
 
-            <section id="audio-content-section">
-                <h3>Аудіо супровід</h3>
+            <section id="audio-content-section" class="content-block" style="display: none;">
+                <h3>Аудіо підкаст</h3>
                 <div class="audio-container">
-                    <audio controls id="audio-player" src="audio/8.wav">
+                    <audio id="audio-player" preload="metadata" controls>
                         Ваш браузер не підтримує аудіо елемент.
                     </audio>
                 </div>
             </section>
 
-            <section id="quiz-section">
+            <section id="text-material-section" class="content-block">
+                <h3>Текстовий матеріал</h3>
+                <div id="markdown-content">
+                    <p>Завантаження текстового контенту...</p>
+                </div>
+            </section>
+
+            <section id="quiz-section" class="content-block" style="display: none;">
                 <h3>Тест для самоперевірки</h3>
                 <div id="quiz-container">
-                    <!-- Питання тесту будуть завантажені сюди -->
+                    <p>Завантаження тесту...</p>
                 </div>
-                <button id="submit-quiz-btn" class="quiz-submit-btn" style="display: none;">Перевірити відповіді</button>
-                <div id="quiz-results"></div>
+                <button id="submit-quiz-btn" class="primary quiz-submit-btn" style="display: none;">Перевірити відповіді</button>
+                <div id="quiz-results" style="display: none;">
+                    </div>
             </section>
         </article>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Тренінг по Відеонагляду</p>
-        <p>Всі права захищені</p>
+    <footer style="background-color: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant); text-align: center; padding: 1.5rem; margin-top: auto;">
+        <p>&copy; <span id="current-year">2024</span> Тренінг по Відеонагляду</p> <p>Всі права захищені. <a href="#" class="text" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">На початок сторінки</a></p>
     </footer>
+    <script>
+        // Динамічне оновлення року в футері
+        if (document.getElementById('current-year')) {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        }
+    </script>
 </body>
-</html> 
+</html>

@@ -1,0 +1,309 @@
+/* styles/chapter-styles.css */
+/* Специфічні стилі для сторінки розділу. */
+
+body.chapter-page { 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--md-sys-color-background);
+    padding-top: 0; 
+}
+
+.chapter-page-header { 
+    background-color: var(--md-sys-color-surface-container-low, #F7F2FA); /* Додано fallback */
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--md-sys-elevation-level2);
+    position: sticky;
+    top: 0;
+    z-index: 1051; 
+}
+.chapter-page-header .site-title-link {
+    text-decoration: none;
+}
+.chapter-page-header .site-title-link h1 {
+    font-size: var(--md-sys-typescale-title-large-font-size);
+    color: var(--md-sys-color-primary);
+    margin: 0;
+}
+.chapter-page-header #theme-toggle {
+    margin-left: 1rem; 
+}
+
+.chapter-navigation-bar { 
+    background-color: var(--md-sys-color-surface-container, #F3EDF7); /* Додано fallback */
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    position: sticky;
+    /* Висота .chapter-page-header (padding-top + line-height h1 + padding-bottom) 
+       0.75rem (12px) + 28px (line-height title-large) + 0.75rem (12px) = 52px */
+    top: 52px; 
+    z-index: 1050; 
+}
+.chapter-navigation-bar .nav-button {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem; 
+    border-radius: var(--md-sys-shape-corner-full);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-flex; 
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid transparent; 
+}
+.chapter-navigation-bar .nav-button:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+.chapter-navigation-bar .nav-button.disabled { 
+    color: var(--md-sys-color-outline);
+    pointer-events: none;
+    background-color: transparent;
+    border-color: var(--md-sys-color-outline-variant); 
+}
+.chapter-progress-indicator {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.9rem;
+}
+
+main.chapter-layout-main {
+    padding: 1.5rem;
+    max-width: 800px; 
+    margin: 1.5rem auto; 
+    flex-grow: 1;
+    position: relative; 
+    z-index: 1;        
+}
+
+.content-block { 
+    background-color: var(--md-sys-color-surface-container-high, #ECE6F0); /* Додано fallback */
+    padding: 1.5rem;
+    border-radius: var(--md-sys-shape-corner-large); 
+    margin-bottom: 2rem; 
+    box-shadow: var(--md-sys-elevation-level1);
+}
+.content-block h3 { 
+    font-size: var(--md-sys-typescale-title-medium-font-size, 1.25rem); 
+    color: var(--md-sys-color-primary);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--md-sys-color-primary-container);
+}
+
+/* Стилізація контенту, що генерується з Markdown */
+#markdown-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--md-sys-shape-corner-medium); 
+    margin: 1rem auto; 
+    display: block; 
+    box-shadow: var(--md-sys-elevation-level2);
+}
+#markdown-content h1, 
+#markdown-content h2, 
+#markdown-content h3,
+#markdown-content h4 { 
+    color: var(--md-sys-color-on-surface);
+    margin-top: 1.75em; 
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+}
+#markdown-content p { 
+    margin-bottom: 1.25em; 
+    line-height: 1.75; 
+    color: var(--md-sys-color-on-surface-variant); 
+}
+#markdown-content strong { color: var(--md-sys-color-on-surface); }
+#markdown-content ul, #markdown-content ol { 
+    margin-left: 1.75em; 
+    margin-bottom: 1.25em; 
+    padding-left: 0; 
+    color: var(--md-sys-color-on-surface-variant);
+}
+#markdown-content li { margin-bottom: 0.6em; }
+#markdown-content blockquote {
+    border-left: 4px solid var(--md-sys-color-primary); 
+    padding: 0.5rem 1rem; 
+    margin: 1.5em 0; 
+    background-color: var(--md-sys-color-surface-container, #F3EDF7); /* Додано fallback */
+    color: var(--md-sys-color-on-surface-variant);
+    border-radius: 0 var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0;
+}
+#markdown-content code { 
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    padding: 0.2em 0.5em; 
+    border-radius: var(--md-sys-shape-corner-small); 
+    font-family: 'Roboto Mono', 'Courier New', Courier, monospace; 
+    font-size: 0.9em;
+}
+#markdown-content pre { 
+    background-color: var(--md-sys-color-surface-variant); 
+    padding: 1rem;
+    border-radius: var(--md-sys-shape-corner-medium); 
+    overflow-x: auto; 
+    margin: 1.5em 0;
+}
+#markdown-content pre code { 
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.9em;
+}
+#markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    box-shadow: var(--md-sys-elevation-level1);
+    border-radius: var(--md-sys-shape-corner-medium);
+    overflow: hidden; 
+}
+#markdown-content th, #markdown-content td {
+    border: 1px solid var(--md-sys-color-outline-variant);
+    padding: 0.75rem;
+    text-align: left;
+    color: var(--md-sys-color-on-surface-variant);
+}
+#markdown-content th {
+    background-color: var(--md-sys-color-surface-container, #F3EDF7); /* Додано fallback */
+    color: var(--md-sys-color-on-surface);
+    font-weight: 500;
+}
+#markdown-content hr {
+    border: none;
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    margin: 2em 0;
+}
+
+/* Аудіоплеєр */
+.audio-container {
+    margin-top: 0.5rem;
+}
+.audio-container audio { 
+    width: 100%;
+    border-radius: var(--md-sys-shape-corner-small);
+}
+.audio-controls { 
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: var(--md-sys-shape-corner-medium);
+}
+.audio-controls button { 
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--md-sys-shape-corner-small);
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.audio-controls button:hover {
+    background-color: color-mix(in srgb, var(--md-sys-color-secondary-container) 85%, var(--md-sys-color-on-secondary-container));
+}
+.audio-controls input[type="range"] { 
+    flex-grow: 1;
+    accent-color: var(--md-sys-color-primary);
+    max-width: 150px; 
+}
+
+
+/* Тест */
+#submit-quiz-btn {
+    margin-top: 1.5rem;
+}
+#quiz-results {
+    margin-top: 1.5rem;
+    padding: 1.5rem; 
+    border-radius: var(--md-sys-shape-corner-medium);
+    background-color: var(--md-sys-color-surface-container, #F3EDF7); /* Додано fallback */
+}
+.quiz-option { 
+    display: block;
+    margin-bottom: 0.75rem; 
+    padding: 1rem; 
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: var(--md-sys-shape-corner-medium); 
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    border: 1px solid var(--md-sys-color-outline-variant); 
+}
+.quiz-option:hover {
+    background-color: var(--md-sys-color-secondary-container); 
+    border-color: var(--md-sys-color-secondary); 
+}
+.quiz-option input[type="radio"] {
+    margin-right: 0.75rem;
+    accent-color: var(--md-sys-color-primary);
+    transform: scale(1.1); 
+}
+.quiz-question { margin-bottom: 1.5rem; }
+.quiz-question .question-text { font-weight: 500; margin-bottom: 0.75rem; color: var(--md-sys-color-on-surface); }
+
+/* Стилі для фідбеку тесту (додані JS) */
+.question-feedback { padding: 0.75rem; margin-bottom: 0.5rem; border-radius: var(--md-sys-shape-corner-medium); }
+.question-feedback.correct { background-color: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); }
+.question-feedback.incorrect { background-color: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); }
+.question-feedback.unanswered { background-color: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant); }
+.quiz-results-summary { padding: 1rem; margin-bottom: 1rem; border-radius: var(--md-sys-shape-corner-medium); }
+.quiz-results-summary.passed { background-color: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); }
+.quiz-results-summary.failed { background-color: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); }
+
+
+.error-message-js { 
+     padding: 1rem; 
+     background-color: var(--md-sys-color-error-container); 
+     color: var(--md-sys-color-on-error-container); 
+     border-radius: var(--md-sys-shape-corner-medium);
+     margin-bottom: 1rem;
+     text-align: center;
+}
+
+/* Адаптивність для сторінки розділу */
+@media (max-width: 768px) {
+    .chapter-page-header {
+        padding: 0.5rem 1rem; /* 8px top/bottom padding */
+    }
+    .chapter-page-header .site-title-link h1 {
+        /* title-medium: font-size 16px, line-height 24px */
+        font-size: var(--md-sys-typescale-title-medium-font-size, 16px); 
+    }
+    .chapter-navigation-bar {
+        padding: 0.5rem 1rem;
+        /* Висота .chapter-page-header: 8px (padding) + 24px (line-height h1) + 8px (padding) = 40px */
+        top: 40px; 
+        font-size: 0.9rem; 
+    }
+    .chapter-navigation-bar .nav-button {
+        padding: 0.5rem 0.8rem;
+    }
+    main.chapter-layout-main {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+    .content-block {
+        padding: 1rem;
+    }
+}
+ @media (max-width: 480px) {
+    .chapter-navigation-bar {
+        flex-direction: column; 
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        /* top залишається 40px, якщо .chapter-page-header не змінює висоту далі */
+    }
+    .chapter-progress-indicator {
+        order: -1; 
+        margin-bottom: 0.5rem;
+    }
+ }

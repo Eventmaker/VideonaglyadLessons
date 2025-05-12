@@ -1,70 +1,82 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-theme="light"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Тренінг по відеонагляду - навчальний курс з основ відеоспостереження">
-    <meta name="keywords" content="відеонагляд, відеоспостереження, навчання, тренінг">
-    <title>Тренінг по Відеонагляду</title>
+    <title>Vechir Telecom - Уроки Відеонагляду</title>
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Інтерактивний курс з основ відеонагляду. Головна сторінка.">
+    <link rel="icon" href="/favicon.ico" sizes="any"> <link rel="icon" href="/favicon.svg" type="image/svg+xml"> <link rel="apple-touch-icon" href="/apple-touch-icon.png"> </head>
 <body>
-    <header>
-        <h1>Тренінг по Відеонагляду</h1>
-        <button id="dark-mode-toggle" class="theme-toggle" aria-label="Перемкнути темну тему">🌙</button>
+    <header id="site-header"> 
+        <h1>Уроки Відеонагляду</h1>
+        <button id="theme-toggle" class="text">Темна тема 🌙</button>
     </header>
-    
-    <nav class="toc-nav" role="navigation" aria-label="Зміст">
-        <h2>Зміст</h2>
-        <ul>
-            <li><a href="chapter1.html" id="toc-chapter-1">Розділ 1: Вступ та Загальні Поняття</a></li>
-            <li><a href="chapter2.html" id="toc-chapter-2">Розділ 2: Ключові Компоненти Системи</a></li>
-            <li><a href="chapter3.html" id="toc-chapter-3">Розділ 3: Юридичні та Етичні Аспекти</a></li>
-            <li><a href="chapter4.html" id="toc-chapter-4">Розділ 4: Аналіз Об'єкту та Визначення Вимог</a></li>
-            <li><a href="chapter5.html" id="toc-chapter-5">Розділ 5: Підбір Оптимального Обладнання</a></li>
-            <li><a href="chapter6.html" id="toc-chapter-6">Розділ 6: Проектування Мережевої Інфраструктури</a></li>
-            <li><a href="chapter7.html" id="toc-chapter-7">Розділ 7: Фізичний Монтаж Обладнання</a></li>
-            <li><a href="chapter8.html" id="toc-chapter-8">Розділ 8: Початкова Конфігурація Пристроїв</a></li>
-            <li><a href="chapter9.html" id="toc-chapter-9">Розділ 9: Налаштування Запису та Зберігання</a></li>
-            <li><a href="chapter10.html" id="toc-chapter-10">Розділ 10: Налаштування Відео та Аудіо Параметрів</a></li>
-            <li><a href="chapter11.html" id="toc-chapter-11">Розділ 11: Налаштування Віддаленого Доступу</a></li>
-            <li><a href="chapter12.html" id="toc-chapter-12">Розділ 12: Відеоаналітика та Робота з Подіями</a></li>
-            <li><a href="chapter13.html" id="toc-chapter-13">Розділ 13: Інтеграція з Іншими Системами</a></li>
-            <li><a href="chapter14.html" id="toc-chapter-14">Розділ 14: Комплексне Тестування та Введення в Експлуатацію</a></li>
-            <li><a href="chapter15.html" id="toc-chapter-15">Розділ 15: Діагностика та Усунення Типових Несправностей</a></li>
-            <li><a href="chapter16.html" id="toc-chapter-16">Розділ 16: Обслуговування та Найкращі Практики</a></li>
-            <li><a href="chapter17.html" id="toc-chapter-17">Розділ 17: Специфіка роботи для Інтернет-Провайдера</a></li>
-            <li><a href="chapter18.html" id="toc-chapter-18">Розділ 18: Типові Сценарії та Кейси Використання</a></li>
-        </ul>
-    </nav>
 
-    <main>
-        <section id="welcome-section">
+    <main id="index-main"> 
+        <section id="intro">
             <h2>Ласкаво просимо!</h2>
-            <p>Оберіть розділ зі змісту, щоб розпочати навчання.</p>
-            <div class="features">
-                <div class="feature">
-                    <h3>📚 Навчальні матеріали</h3>
-                    <p>Детальні текстові матеріали з прикладами та поясненнями</p>
-                </div>
-                <div class="feature">
-                    <h3>🎧 Аудіо супровід</h3>
-                    <p>Аудіо лекції для кращого засвоєння матеріалу</p>
-                </div>
-                <div class="feature">
-                    <h3>📝 Тести</h3>
-                    <p>Перевірте свої знання після кожного розділу</p>
-                </div>
+            <p>Цей курс допоможе вам розібратися в основах систем відеонагляду, вибрати правильне обладнання та налаштувати його.</p>
+            <p>Оберіть розділ нижче, щоб розпочати навчання.</p>
+        </section>
+
+        <section id="chapters-list-section">
+            <h2>Розділи курсу:</h2>
+            <div class="chapter-list">
+                <a href="chapter1.html" class="chapter-card">
+                    <div>
+                        <h3>Розділ 1: Вступ до відеонагляду</h3>
+                        <p>Що таке відеонагляд, його цілі та завдання. Типи систем.</p>
+                    </div>
+                    <span>Детальніше...</span>
+                </a>
+                <a href="chapter2.html" class="chapter-card">
+                    <div>
+                        <h3>Розділ 2: Типи камер</h3>
+                        <p>Аналогові, IP-камери, їх переваги та недоліки. Форм-фактори камер.</p>
+                    </div>
+                    <span>Детальніше...</span>
+                </a>
+                <a href="chapter3.html" class="chapter-card">
+                     <div>
+                        <h3>Розділ 3: Об'єктиви та їх характеристики</h3>
+                        <p>Фокусна відстань, кут огляду, світлосила. Вибір об'єктива.</p>
+                    </div>
+                    <span>Детальніше...</span>
+                </a>
+                <a href="chapter4.html" class="chapter-card"><div><h3>Розділ 4: Запис та зберігання відео</h3><p>Відеореєстратори (DVR, NVR), хмарне зберігання.</p></div><span>Детальніше...</span></a>
+                <a href="chapter5.html" class="chapter-card"><div><h3>Розділ 5: Мережеві технології</h3><p>Основи IP-мереж для відеонагляду, PoE.</p></div><span>Детальніше...</span></a>
+                <a href="chapter6.html" class="chapter-card"><div><h3>Розділ 6: Програмне забезпечення</h3><p>CMS, мобільні додатки, аналітика.</p></div><span>Детальніше...</span></a>
+                <a href="chapter7.html" class="chapter-card"><div><h3>Розділ 7: Проектування систем</h3><p>Визначення зон контролю, розрахунок кількості камер.</p></div><span>Детальніше...</span></a>
+                <a href="chapter8.html" class="chapter-card"><div><h3>Розділ 8: Монтаж та налаштування</h3><p>Основні етапи встановлення обладнання.</p></div><span>Детальніше...</span></a>
+                <a href="chapter9.html" class="chapter-card"><div><h3>Розділ 9: Юридичні аспекти</h3><p>Законодавство та приватність.</p></div><span>Детальніше...</span></a>
+                <a href="chapter10.html" class="chapter-card"><div><h3>Розділ 10: Бездротові системи</h3><p>Переваги, недоліки, особливості Wi-Fi камер.</p></div><span>Детальніше...</span></a>
+                <a href="chapter11.html" class="chapter-card"><div><h3>Розділ 11: ІЧ-підсвічування та нічне бачення</h3><p>Як працює, типи, дальність.</p></div><span>Детальніше...</span></a>
+                <a href="chapter12.html" class="chapter-card"><div><h3>Розділ 12: Джерела живлення</h3><p>Блоки живлення, ДБЖ для систем відеонагляду.</p></div><span>Детальніше...</span></a>
+                <a href="chapter13.html" class="chapter-card"><div><h3>Розділ 13: PTZ-камери</h3><p>Поворотні камери: можливості та управління.</p></div><span>Детальніше...</span></a>
+                <a href="chapter14.html" class="chapter-card"><div><h3>Розділ 14: Відеоаналітика</h3><p>Детекція руху, розпізнавання облич, перетин лінії.</p></div><span>Детальніше...</span></a>
+                <a href="chapter15.html" class="chapter-card"><div><h3>Розділ 15: Інтеграція з іншими системами</h3><p>Охоронна сигналізація, СКУД.</p></div><span>Детальніше...</span></a>
+                <a href="chapter16.html" class="chapter-card"><div><h3>Розділ 16: Обслуговування та діагностика</h3><p>Типові несправності та їх усунення.</p></div><span>Детальніше...</span></a>
+                <a href="chapter17.html" class="chapter-card"><div><h3>Розділ 17: Хмарний відеонагляд</h3><p>Переваги, недоліки, популярні сервіси.</p></div><span>Детальніше...</span></a>
+                <a href="chapter18.html" class="chapter-card"><div><h3>Розділ 18: Майбутнє відеонагляду</h3><p>Штучний інтелект, нові технології.</p></div><span>Детальніше...</span></a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Тренінг по Відеонагляду</p>
-        <p>Всі права захищені</p>
+        <p>&copy; <span id="current-year">2024</span> Уроки Відеонагляду. Всі права захищено.</p>
+        <p><a href="#" class="text" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">На початок сторінки</a></p>
     </footer>
 
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js" defer></script>
+    <script>
+        // Динамічне оновлення року в футері
+        if (document.getElementById('current-year')) {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        }
+    </script>
 </body>
-</html> 
+</html>
